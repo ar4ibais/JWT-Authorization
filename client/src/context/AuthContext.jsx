@@ -7,16 +7,23 @@ import showErrorMessage from "../utils/showErrorMessage";
 
 export const AuthContext = createContext({});
 
+export const AuthClient = axios.create({
+  baseURL: `${config.API_URL}/auth`,
+  withCredentials: true
+})
+
 const AuthProvider = ({ children }) => {
   const [data, setData] = useState();
 
-  const handleFetchProtected = () => {};
+  const handleFetchProtected = () => { };
 
-  const handleLogOut = () => {};
+  const handleLogOut = () => { };
 
-  const handleSignUp = (data) => {};
+  const handleSignUp = (data) => {
+    AuthClient.post("/sign-up", data)
+  };
 
-  const handleSignIn = (data) => {};
+  const handleSignIn = (data) => { };
 
   return (
     <AuthContext.Provider
